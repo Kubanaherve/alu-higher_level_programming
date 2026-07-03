@@ -1,25 +1,15 @@
 #!/usr/bin/python3
+"""Module for safe_print_list_integers."""
+
 
 def safe_print_list_integers(my_list=[], x=0):
-    """Print x integers from my_list safely using try/except.
-    
-    Args:
-        my_list: The list to print integers from
-        x: Number of elements to attempt to print
-        
-    Returns:
-        int: Number of integers successfully printed
-    """
+    """Print only the integers among the first x elements of a list."""
     count = 0
     for i in range(x):
         try:
-            print("{:d}".format(my_list[i]))
+            print("{:d}".format(my_list[i]), end="")
             count += 1
-        except (IndexError, ValueError, TypeError):
+        except (ValueError, TypeError):
             continue
+    print()
     return count
-
-if __name__ == "__main__":
-    my_list = [1, 2, 3, "School", 5]
-    count = safe_print_list_integers(my_list, 5)
-    print("Count:", count)

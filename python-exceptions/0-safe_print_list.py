@@ -1,27 +1,15 @@
 #!/usr/bin/python3
+"""Module for safe_print_list."""
 
-def safe_print_list(list_to_print, x):
-    """Print x elements from list_to_print safely using try/except.
-    
-    Args:
-        list_to_print: The list to print from
-        x: Number of elements to attempt to print
-        
-    Returns:
-        int: Number of elements successfully printed
-    """
+
+def safe_print_list(my_list=[], x=0):
+    """Print x elements of a list, safely."""
     count = 0
-    try:
-        for i in range(x):
-            print("{}".format(list_to_print[i]))
+    for i in range(x):
+        try:
+            print("{}".format(my_list[i]), end="")
             count += 1
-    except IndexError:
-        pass
+        except IndexError:
+            break
+    print()
     return count
-
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) > 1:
-        x = int(sys.argv[1])
-        my_list = ["School", 1, "Python", 2, "University"]
-        safe_print_list(my_list, x)
