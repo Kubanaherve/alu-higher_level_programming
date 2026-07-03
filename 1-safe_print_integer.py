@@ -4,4 +4,8 @@
 
 def safe_print_integer(value):
     """Print an integer safely using {:d} formatting."""
-    pass
+    try:
+        print("{:d}".format(value))
+        return True
+    except (ValueError, TypeError):
+        return False
