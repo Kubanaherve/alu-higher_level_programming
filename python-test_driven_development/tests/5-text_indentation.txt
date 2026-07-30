@@ -1,0 +1,74 @@
+Tests for text_indentation function
+====================================
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Normal cases
+------------
+
+>>> text_indentation("Hello. World? Test: Done")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+Test:
+<BLANKLINE>
+Done
+>>> text_indentation("Hello.")
+Hello.
+<BLANKLINE>
+>>> text_indentation("Hi?")
+Hi?
+<BLANKLINE>
+
+Multiple delimiters
+-------------------
+
+>>> text_indentation("A.B?C:D")
+A.
+<BLANKLINE>
+B?
+<BLANKLINE>
+C:
+<BLANKLINE>
+D
+
+Leading/trailing spaces
+-----------------------
+
+>>> text_indentation("  Hello.  World?  ")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+
+No delimiters
+-------------
+
+>>> text_indentation("Hello World")
+Hello World
+
+Empty string
+------------
+
+>>> text_indentation("")
+
+TypeError cases
+---------------
+
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+>>> text_indentation(None)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+>>> text_indentation([1, 2])
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+>>> text_indentation(3.14)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string

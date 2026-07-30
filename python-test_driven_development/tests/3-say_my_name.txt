@@ -1,0 +1,72 @@
+Tests for say_my_name function
+===============================
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Normal cases
+------------
+
+>>> say_my_name("John", "Smith")
+My name is John Smith
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+Default last_name
+-----------------
+
+>>> say_my_name("Bob")
+My name is Bob 
+>>> say_my_name("John")
+My name is John 
+
+Single names
+------------
+
+>>> say_my_name("John", "")
+My name is John 
+>>> say_my_name("", "Smith")
+My name is  Smith
+>>> say_my_name("", "")
+My name is  
+
+TypeError cases
+---------------
+
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+>>> say_my_name("John", 123)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+>>> say_my_name(None, "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+>>> say_my_name("John", None)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+>>> say_my_name(1.5, "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+>>> say_my_name("John", 3.14)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+>>> say_my_name([], "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+>>> say_my_name("John", {})
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+Edge cases
+----------
+
+>>> say_my_name("a", "b")
+My name is a b

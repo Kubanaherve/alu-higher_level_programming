@@ -1,0 +1,94 @@
+Tests for add_integer function
+==============================
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+Normal cases
+------------
+
+>>> add_integer(1, 2)
+3
+>>> add_integer(100, -2)
+98
+>>> add_integer(2)
+100
+>>> add_integer(0, 0)
+0
+>>> add_integer(-5, -10)
+-15
+>>> add_integer(1000000, 2000000)
+3000000
+
+Float handling (cast to int)
+----------------------------
+
+>>> add_integer(100.3, -2)
+98
+>>> add_integer(100.3, 2.7)
+102
+>>> add_integer(2.9, 3.1)
+5
+>>> add_integer(-2.9, -3.1)
+-5
+>>> add_integer(0.5, 0.5)
+0
+>>> add_integer(-0.9, 0.9)
+0
+
+Default argument b=98
+---------------------
+
+>>> add_integer(0)
+98
+>>> add_integer(-98)
+0
+>>> add_integer(1.5)
+99
+
+TypeError cases
+---------------
+
+>>> add_integer("string", 1)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+>>> add_integer(1, "string")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+>>> add_integer(None, 1)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+>>> add_integer(1, None)
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+>>> add_integer([1, 2], 3)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+>>> add_integer(1, [2, 3])
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+>>> add_integer((1,), 2)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+>>> add_integer(1, {2: 3})
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+>>> add_integer("school", 1)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+Edge cases
+----------
+
+>>> add_integer(-1, 1)
+0
+>>> add_integer(0, -0)
+0
