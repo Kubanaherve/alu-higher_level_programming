@@ -130,3 +130,30 @@ ZeroDivisionError
 Traceback (most recent call last):
     ...
 ZeroDivisionError: division by zero
+
+Div = infinity
+--------------
+
+>>> import math
+>>> matrix_divided([[1, 2], [3, 4]], math.inf)
+[[0.0, 0.0], [0.0, 0.0]]
+
+Matrix with inf/nan values
+--------------------------
+
+>>> matrix_divided([[1, math.inf], [3, 4]], 2)
+[[0.5, inf], [1.5, 2.0]]
+>>> matrix_divided([[1, math.nan], [3, 4]], 2)
+[[0.5, nan], [1.5, 2.0]]
+
+Missing arguments
+-----------------
+
+>>> matrix_divided([[1, 2]])
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+>>> matrix_divided()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
